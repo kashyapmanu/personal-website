@@ -192,6 +192,17 @@
   @media (max-width: 640px) {
     .wrap { padding: 0 22px; }
     body { font-size: 16px; }
+    .pill-btn-label { display: none; }
+    .pill-btn { padding: 8px 10px; gap: 0; }
+    .hero-lede { font-size: 17px; }
+    .prose { font-size: 16px; }
+    .project-name { font-size: 26px; }
+    .role-title { font-size: 22px; }
+    .now-card h3 { font-size: 22px; }
+    .now-card { padding: 22px; }
+    .contact { padding: 72px 0 40px; }
+    .section-head { margin-bottom: 32px; }
+    .hero-meta { gap: 14px 18px; }
   }
 
   /* ── Nav ───────────────────────────────────────────── */
@@ -243,6 +254,7 @@
   .nav-links .num { color: var(--accent); margin-right: 6px; }
   @media (max-width: 820px) {
     .nav-links .link { display: none; }
+    .mark em { display: none; }
   }
 
   /* Mobile hamburger */
@@ -1255,7 +1267,7 @@
         <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       </button>
       <button class="pill-btn" id="resume-btn" title="Save as PDF">
-        Resume
+        <span class="pill-btn-label">Resume</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
       </button>
       <button class="ask-ai-btn" id="ask-ai-btn" title="Ask AI about me">
