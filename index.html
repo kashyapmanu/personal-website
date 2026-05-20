@@ -4,8 +4,59 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Manukashyap U. V. — Senior Software Engineer</title>
-<meta name="description" content="Senior full-stack engineer at Sony building global supply chain systems and agentic developer tools. Java, Spring, React, AWS, LLM/RAG." />
+<meta name="description" content="Senior full-stack engineer at Sony building global-scale supply chain platforms and agentic developer tools. Java, Spring, React, AWS, LLM/RAG." />
 <meta name="color-scheme" content="light dark" />
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Manukashyap U. V. — Senior Software Engineer" />
+<meta property="og:description" content="Senior full-stack engineer at Sony building global-scale supply chain platforms and agentic developer tools." />
+<meta property="og:url" content="https://manukashyap.in" />
+<meta property="og:image" content="https://manukashyap.in/assets/favicon-512.png" />
+<meta property="og:image:width" content="512" />
+<meta property="og:image:height" content="512" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Manukashyap U. V. — Senior Software Engineer" />
+<meta name="twitter:description" content="Senior full-stack engineer at Sony building global-scale supply chain platforms and agentic developer tools." />
+<meta name="twitter:image" content="https://manukashyap.in/assets/favicon-512.png" />
+
+<!-- Structured Data (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Manukashyap Ubaradka Venkatramana",
+  "alternateName": "Manukashyap U. V.",
+  "url": "https://manukashyap.in",
+  "jobTitle": "Senior Software Engineer",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Sony"
+  },
+  "knowsAbout": ["Java", "Spring Boot", "React", "Vue.js", "AWS", "LLM", "RAG", "Multi-agent Systems", "Supply Chain"],
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "Nitte University"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/in/manukashyapuv/",
+    "https://github.com/kashyapmanu"
+  ],
+  "email": "manukashyap.u.v@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Bengaluru",
+    "addressCountry": "IN"
+  }
+}
+</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -131,6 +182,79 @@
   .nav-links .num { color: var(--accent); margin-right: 6px; }
   @media (max-width: 820px) {
     .nav-links .link { display: none; }
+  }
+
+  /* Mobile hamburger */
+  .hamburger {
+    display: none;
+    width: 36px; height: 36px;
+    align-items: center; justify-content: center;
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    cursor: pointer;
+    color: var(--ink-2);
+    transition: all 160ms ease;
+    position: relative;
+    z-index: 110;
+  }
+  .hamburger:hover { color: var(--ink); border-color: var(--ink-2); }
+  .hamburger svg { width: 16px; height: 16px; }
+  .hamburger .icon-close { display: none; }
+  .hamburger.is-open .icon-menu { display: none; }
+  .hamburger.is-open .icon-close { display: block; }
+  @media (max-width: 820px) {
+    .hamburger { display: inline-flex; }
+  }
+
+  .mobile-drawer {
+    position: fixed;
+    top: 0; right: 0;
+    width: 280px; height: 100vh;
+    background: var(--bg-elev);
+    border-left: 1px solid var(--line);
+    z-index: 100;
+    padding: 96px 32px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transform: translateX(100%);
+    transition: transform 320ms cubic-bezier(.2,.7,.2,1);
+    box-shadow: -16px 0 48px -16px rgba(0,0,0,0.15);
+  }
+  .mobile-drawer.is-open {
+    transform: none;
+  }
+  .mobile-drawer a {
+    font-family: 'Geist Mono', monospace;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    text-decoration: none;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line-2);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: color 160ms ease;
+  }
+  .mobile-drawer a:hover, .mobile-drawer a:active { color: var(--ink); }
+  .mobile-drawer a .num { color: var(--accent); }
+  .drawer-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 90;
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 280ms ease;
+  }
+  .drawer-backdrop.is-open {
+    opacity: 1;
+    pointer-events: auto;
   }
 
   .nav-actions { display: flex; align-items: center; gap: 12px; }
@@ -560,6 +684,9 @@
     font-size: 16px;
     color: var(--ink-2);
     line-height: 1.7;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px 0;
   }
   .skill-cat .v span { white-space: nowrap; }
   .skill-cat .v span:not(:last-child)::after {
@@ -567,6 +694,167 @@
     color: var(--muted);
     margin: 0 2px;
   }
+
+  /* ── Ask AI button & modal ───────────────────────── */
+  .ask-ai-btn {
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 8px 14px;
+    font: 500 13px/1 'Geist', sans-serif;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border: 1px solid color-mix(in oklab, var(--accent) 25%, var(--line));
+    border-radius: 999px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 180ms ease;
+  }
+  .ask-ai-btn:hover {
+    background: color-mix(in oklab, var(--accent) 15%, var(--bg-elev));
+    border-color: var(--accent);
+  }
+  .ask-ai-btn svg { width: 14px; height: 14px; }
+  @media (max-width: 820px) {
+    .ask-ai-btn span.label { display: none; }
+    .ask-ai-btn { padding: 8px 10px; }
+  }
+
+  .ai-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(0,0,0,0.45);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 280ms ease;
+  }
+  .ai-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .ai-modal {
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 40px 36px 36px;
+    max-width: 520px;
+    width: 92%;
+    box-shadow: 0 32px 80px -24px rgba(0,0,0,0.35);
+    transform: translateY(16px) scale(0.97);
+    transition: transform 320ms cubic-bezier(.2,.7,.2,1), opacity 320ms ease;
+    opacity: 0;
+  }
+  .ai-overlay.show .ai-modal {
+    transform: none;
+    opacity: 1;
+  }
+  .ai-modal-head {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .ai-modal-head h3 {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-weight: 400;
+    font-size: 26px;
+    letter-spacing: -0.01em;
+    margin: 0;
+    color: var(--ink);
+  }
+  .ai-modal-head h3 em { font-style: italic; color: var(--accent); }
+  .ai-modal-close {
+    width: 32px; height: 32px;
+    display: flex; align-items: center; justify-content: center;
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 160ms ease;
+  }
+  .ai-modal-close:hover { color: var(--ink); border-color: var(--ink-2); }
+  .ai-modal-close svg { width: 14px; height: 14px; }
+
+  .ai-prompt-box {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .ai-prompt-box p {
+    font-family: 'Geist Mono', monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--ink-2);
+    margin: 0;
+    padding-right: 60px;
+  }
+  .ai-prompt-box .copy-btn {
+    position: absolute;
+    top: 12px; right: 12px;
+    padding: 6px 12px;
+    font: 500 11px/1 'Geist Mono', monospace;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 160ms ease;
+  }
+  .ai-prompt-box .copy-btn:hover { background: color-mix(in oklab, var(--accent) 20%, var(--bg-elev)); }
+
+  .ai-prompt-hint {
+    font-size: 13.5px;
+    color: var(--muted);
+    margin: 0 0 14px;
+    line-height: 1.5;
+  }
+
+  .ai-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  @media (max-width: 480px) { .ai-links { grid-template-columns: 1fr; } }
+  .ai-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 16px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--ink-2);
+    font: 400 14px/1 'Geist', sans-serif;
+    transition: all 180ms ease;
+  }
+  .ai-link:hover {
+    border-color: var(--accent);
+    color: var(--ink);
+    transform: translateY(-1px);
+  }
+  .ai-link .ai-icon {
+    width: 24px; height: 24px;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .ai-link .arrow {
+    margin-left: auto;
+    color: var(--muted);
+    font-size: 13px;
+    transition: transform 200ms ease;
+  }
+  .ai-link:hover .arrow { transform: translate(2px, -2px); }
 
   /* ── Certs & Awards ────────────────────────────────── */
   .cards-2col {
@@ -707,7 +995,57 @@
   footer a { color: var(--muted); text-decoration: none; }
   footer a:hover { color: var(--accent); }
 
-  /* ── Scroll reveal ─────────────────────────────────── */
+  /* ── Scroll-to-top button ─────────────────────────── */
+  .scroll-top {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    z-index: 60;
+    width: 44px; height: 44px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--ink-2);
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    opacity: 0;
+    transform: translateY(12px);
+    pointer-events: none;
+    transition: opacity 280ms ease, transform 280ms ease, border-color 160ms ease, color 160ms ease;
+  }
+  .scroll-top.show {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+  .scroll-top:hover { color: var(--accent); border-color: var(--accent); }
+  .scroll-top svg { width: 18px; height: 18px; }
+  @media (max-width: 640px) {
+    .scroll-top { bottom: 20px; right: 20px; width: 40px; height: 40px; }
+  }
+
+  /* ── Hero stagger animation ────────────────────── */
+  .hero .stagger {
+    opacity: 0;
+    transform: translateY(18px);
+    animation: stagger-in 700ms cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .hero .stagger:nth-child(1) { animation-delay: 80ms; }
+  .hero .stagger:nth-child(2) { animation-delay: 200ms; }
+  .hero .stagger:nth-child(3) { animation-delay: 340ms; }
+  .hero .stagger:nth-child(4) { animation-delay: 460ms; }
+  .hero .avatar-wrap { opacity: 0; animation: stagger-in 800ms cubic-bezier(.2,.7,.2,1) 500ms forwards; }
+  @keyframes stagger-in {
+    to { opacity: 1; transform: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero .stagger, .hero .avatar-wrap {
+      opacity: 1; transform: none; animation: none;
+    }
+  }
+
+  /* ── Scroll reveal ─────────────────────────────── */
   .reveal {
     opacity: 0;
     transform: translateY(14px);
@@ -718,6 +1056,104 @@
     .reveal { opacity: 1; transform: none; transition: none; }
     html { scroll-behavior: auto; }
     .eyebrow .pulse { animation: none; }
+  }
+
+  /* ── Resume modal ───────────────────────────────── */
+  .resume-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(0,0,0,0.45);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 280ms ease;
+  }
+  .resume-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .resume-modal {
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 48px 44px 40px;
+    max-width: 460px;
+    width: 90%;
+    box-shadow: 0 32px 80px -24px rgba(0,0,0,0.35);
+    text-align: center;
+    transform: translateY(16px) scale(0.97);
+    transition: transform 320ms cubic-bezier(.2,.7,.2,1), opacity 320ms ease;
+    opacity: 0;
+  }
+  .resume-overlay.show .resume-modal {
+    transform: none;
+    opacity: 1;
+  }
+  .resume-modal .emoji {
+    font-size: 48px;
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+  .resume-modal h3 {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-weight: 400;
+    font-size: 30px;
+    letter-spacing: -0.015em;
+    margin: 0 0 12px;
+    color: var(--ink);
+  }
+  .resume-modal h3 em { font-style: italic; color: var(--accent); }
+  .resume-modal p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-2);
+    margin: 0 0 28px;
+  }
+  .resume-modal .cta-row {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .resume-modal .cta-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    font: 500 14px/1 'Geist', sans-serif;
+    color: #fff;
+    background: var(--accent);
+    border: none;
+    border-radius: 999px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 180ms ease;
+  }
+  .resume-modal .cta-primary:hover {
+    background: color-mix(in oklab, var(--accent) 85%, #000);
+    transform: translateY(-1px);
+  }
+  .resume-modal .cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    font: 500 14px/1 'Geist', sans-serif;
+    color: var(--ink-2);
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 180ms ease;
+  }
+  .resume-modal .cta-secondary:hover {
+    border-color: var(--ink-2);
+    color: var(--ink);
   }
 
   /* ── Print (PDF) ───────────────────────────────────── */
@@ -749,6 +1185,10 @@
       <a href="#contact" class="link"><span class="num">04</span>Contact</a>
     </nav>
     <div class="nav-actions">
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
       <button class="icon-btn" id="theme-toggle" aria-label="Toggle color theme" title="Toggle theme">
         <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
         <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -757,9 +1197,22 @@
         Resume
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
       </button>
+      <button class="ask-ai-btn" id="ask-ai-btn" title="Ask AI about me">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v2m0 14v2m9-9h-2M5 12H3m14.5-6.5L16 7M8 16l-1.5 1.5M17.5 17.5 16 16M8 8 6.5 6.5"/><circle cx="12" cy="12" r="3"/></svg>
+        <span class="label">Ask AI</span>
+      </button>
     </div>
   </div>
 </header>
+
+<!-- Mobile drawer -->
+<div class="drawer-backdrop" id="drawer-backdrop"></div>
+<nav class="mobile-drawer" id="mobile-drawer" aria-label="Mobile navigation">
+  <a href="#about" class="drawer-link"><span class="num">01</span>About</a>
+  <a href="#work" class="drawer-link"><span class="num">02</span>Work</a>
+  <a href="#projects" class="drawer-link"><span class="num">03</span>Projects</a>
+  <a href="#contact" class="drawer-link"><span class="num">04</span>Contact</a>
+</nav>
 
 <a id="top"></a>
 
@@ -767,19 +1220,20 @@
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <div class="eyebrow"><span class="pulse"></span> Open to senior / staff roles · Bengaluru, India</div>
-      <h1>
+      <div class="eyebrow stagger"><span class="pulse"></span> Open to senior / staff roles · Bengaluru, India</div>
+      <h1 class="stagger">
         Senior engineer at <span class="ital">Sony</span> —<br>
         supply chain <span class="ampersand">&amp;</span><br>
         <span class="ital">developer tooling.</span>
       </h1>
-      <p class="hero-lede">
+      <p class="hero-lede stagger">
         I'm <strong>Manukashyap</strong>, a senior software engineer at <strong>Sony</strong>.
-        For the past five years I've worked on GSOIS, Sony's global supply chain platform, and more recently
-        on agentic developer tooling. Java and Spring are home; React, Vue, and LLM/RAG are core to my current stack — with AI/RAG systems in production and a multi-agent SDLC pipeline adopted across teams at Sony.
+        For the past five years I've built and scaled Sony's global supply chain platform — handling
+        billions in monthly order volume across four regions. More recently I've been designing autonomous
+        AI-agent workflows that compress the ticket-to-code lifecycle, now adopted across multiple engineering teams.
       </p>
-      <div class="hero-meta">
-        <div><span class="lbl">Now</span> Senior SWE, Sony GSOIS</div>
+      <div class="hero-meta stagger">
+        <div><span class="lbl">Now</span> Senior SWE, Sony</div>
         <div><span class="lbl">Loc</span> Bengaluru, IN</div>
         <div><span class="lbl">Mail</span> <a href="mailto:manukashyap.u.v@gmail.com">manukashyap.u.v@gmail.com</a></div>
       </div>
@@ -787,7 +1241,7 @@
     <div class="avatar-wrap" aria-hidden="true">
       <div class="avatar-ring"></div>
       <div class="avatar">
-        <img src="assets/manukashyap.jpg" alt="Portrait of Manukashyap" />
+        <img src="assets/manukashyap.jpg" alt="Portrait of Manukashyap" loading="lazy" decoding="async" />
       </div>
     </div>
   </div>
@@ -804,19 +1258,20 @@
       <div class="col-label">// Bio</div>
       <div class="prose">
         <p>
-          I joined Sony in 2021 and have been part of the team that built <strong>GSOIS</strong> — the Global Sales Order Issue
-          System — from early mockups into a production platform serving <strong>North America, Europe, APAC, and Japan</strong>.
-          At peak it handles significant order volume, and it's been recognized as Sony's <strong>Best App of the Year for
-          two consecutive years</strong>.
+          I joined Sony in 2021 and have been part of the team that built a global supply chain platform
+          from early mockups into a production system serving <strong>North America, Europe, APAC, and Japan</strong>.
+          At peak it handles billions in monthly order volume, and it's been recognized as <strong>Best App of the Year
+          two years running</strong>.
         </p>
         <p>
           My core is <strong>Java / Spring Boot</strong> — services, Spring Batch pipelines, and the careful work of
           keeping a critical system reliable. But I'm equally comfortable on <strong>React / Vue</strong> frontends,
-          and over the last year I've shipped LLM and RAG systems on AWS Bedrock and Aurora pgvector.
+          and over the last year I've shipped LLM and RAG systems in production.
         </p>
         <p>
-          More recently, I've been building <em>tooling for the engineers building the software</em> — a multi-agent
-          SDLC pipeline now used daily across Sony teams to spec, implement, review, and ship changes.
+          More recently, I've been building <em>tooling for the engineers building the software</em> — designing
+          autonomous agent workflows that compress the ticket-to-code lifecycle, now adopted across multiple
+          engineering teams.
         </p>
       </div>
     </div>
@@ -832,9 +1287,9 @@
         <h3>What I'm <em>working on</em></h3>
         <div style="font-family:'Geist Mono',monospace;font-size:11.5px;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase;">Updated · May 2026</div>
         <ul class="now-list">
-          <li>Scaling the agentic SDLC pipeline from GSOIS to GWX — git worktrees, parallel subagents, automated MRs.</li>
-          <li>Expanding the AI test-generation agent: 300+ Playwright tests auto-authored, rollout to www.sony.com in flight.</li>
-          <li>Tech-leading a pod of 4 — coordinating delivery across SNA, SEU, AP/JP stakeholders.</li>
+          <li>Scaling a multi-agent SDLC pipeline across multiple engineering teams — git worktrees, parallel subagents, automated merge requests.</li>
+          <li>Expanding an AI test-generation agent: hundreds of Playwright tests auto-authored, rollout to a global web platform in flight.</li>
+          <li>Leading a pod of 6 within a 30-person cross-functional team — coordinating delivery across global stakeholders.</li>
           <li>Reading more about evaluation frameworks for agentic systems and spec-first development.</li>
         </ul>
       </div>
@@ -861,37 +1316,49 @@
           <h3 class="role-title">Senior Software Engineer</h3>
           <p class="role-org"><strong>Sony</strong> · Bengaluru, India</p>
 
-          <div class="project-tag">GSOIS · Global Sales Order Issue System</div>
+          <div class="project-tag">Global Supply Chain Platform</div>
           <ul>
-            <li>Built and operate Java/Spring Boot services and Spring Batch jobs at the core of Sony's global order pipeline — handling peak order volume across NA, EU, APAC, and Japan.</li>
-            <li>Tech lead for a pod of 4 (2 engineers, 2 interns) inside a 30-person cross-functional team; coordinating delivery with cross-regional stakeholders.</li>
-            <li>Improved service reliability from 99.7% → 99.9% uptime YoY; zero unplanned outages in the last 12 months.</li>
-            <li>Managed 3 Sev-1 incidents over 2 years — average response under 15 minutes, worst-case resolution within 45 minutes against a 1-hour SLA.</li>
-            <li>Drove CI/CD on GitLab — weekly deployments in active phases, scheduled stable releases in steady-state.</li>
-            <li>Built a <strong>multi-agent SDLC automation system on AWS Kiro CLI</strong>, adopted across GSOIS and expanding to GWX: spec-driven requirements → design &amp; implementation docs → parallel/sequential subagents for code, spec review, and code-quality review, with full git worktree management and automated MR creation.</li>
+            <li>Own critical components across dozens of Spring Batch repositories and multiple microservices forming the core of Sony's global supply chain platform — sustaining billions in peak monthly order volume across North America, Europe, APAC, and Japan without service degradation.</li>
+            <li>Lead a pod of 6 within a 30-person cross-functional team, driving delivery across global regions and translating region-specific business requirements into a unified platform.</li>
+            <li>Drove service reliability to near-perfect uptime through targeted resilience hardening — achieving zero unplanned outages over 12 months.</li>
           </ul>
 
-          <div class="project-tag">GWX · www.sony.com</div>
+          <div class="project-tag">Global Web Platform</div>
           <ul>
-            <li>Built a premature-publishing detection system to prevent unintended content releases on production.</li>
-            <li>Drove <strong>answer engine optimization (AEO)</strong> initiatives to improve Sony's content visibility in AI-generated search.</li>
-            <li>Developed an AI agent that autonomously traverses sites and generates Playwright test cases — migrated 150 Cypress tests and auto-generated <strong>300+ functional tests</strong> across GSOIS; GWX rollout in progress.</li>
-            <li>Led a POC for AI-agent-driven <strong>Scala → Java migration</strong> to accelerate codebase modernization.</li>
+            <li>Engineered a premature publishing detection system for a global marketing platform — intercepting accidental content activations and preventing high-visibility outages.</li>
+            <li>Spearheaded Answer Engine Optimization (AEO) initiatives to align content structure and metadata to LLM retrieval patterns — increasing brand visibility across AI platforms and establishing a standard rolling out across all product categories.</li>
+            <li>Initiated and led a POC for an AI-agent-driven Scala-to-Java codebase migration — engineering an autonomous migration loop that converted the application with a 100% pass rate across 230+ tests and zero performance degradation.</li>
+          </ul>
+
+          <div class="project-tag">Agentic SDLC &amp; Automation Tooling</div>
+          <ul>
+            <li>Designed and deployed a spec-driven multi-agent SDLC automation workflow, adopted by 20+ engineers and currently scaling organization-wide.</li>
+            <li>Architected autonomous agents for requirement gathering, code implementation, and automated merge request creation with git worktree isolation — compressing the ticket-to-merge-request lifecycle from hours to minutes.</li>
+            <li>Partnered with QA leadership to build an AI agent that autonomously crawls web applications and generates Playwright test cases from live site behavior — migrated legacy Cypress tests and auto-generated hundreds of functional test cases, accelerating QA cycles significantly.</li>
           </ul>
         </div>
       </article>
 
       <article class="role reveal">
-        <div class="role-period">Jul 2021 — Dec 2024</div>
+        <div class="role-period">Dec 2021 — Dec 2024</div>
         <div>
           <h3 class="role-title">Software Engineer</h3>
           <p class="role-org"><strong>Sony</strong> · Bengaluru, India</p>
+
+          <div class="project-tag">Global Supply Chain Platform</div>
           <ul>
-            <li>Joined GSOIS in its early phase — helped build the platform from UI mockups to a production-grade full-stack implementation.</li>
+            <li>Joined the platform in its early phase — helped build it from UI mockups to a production-grade full-stack system.</li>
             <li>Developed responsive React interfaces and backend APIs in Java/Spring Boot for global supply chain users.</li>
-            <li>Designed and implemented Spring Batch jobs for purchase-order processing, delivery timeline tracking, and cargo logistics — port/airport destinations and order distribution across shipping routes.</li>
-            <li>Coordinated phased regional rollout across SNA, SEU, AP/JP with stakeholders in Singapore and Japan.</li>
-            <li>Built a full-stack bulk ingestion feature: multipart XLSX upload + reusable Java processing utilities handling <strong>100K+ rows</strong> across multiple business workflows.</li>
+            <li>Designed and implemented Spring Batch jobs for purchase-order processing, delivery timeline tracking, and cargo logistics — covering port/airport destinations and order distribution across shipping routes.</li>
+            <li>Coordinated a phased multi-region rollout across North America, Europe, and Asia — working directly with stakeholders in Singapore and Japan to adapt a unified global data model.</li>
+            <li>Built a full-stack bulk ingestion feature: multipart file upload and reusable Java processing utilities handling 100K+ rows across multiple business workflows.</li>
+          </ul>
+
+          <div class="project-tag">Enterprise Knowledge Retrieval (RAG)</div>
+          <ul>
+            <li>Built an in-production AI-powered RAG application for internal enterprise knowledge retrieval — accelerating knowledge discovery and reducing redundant engineering support queries across hundreds of internal users.</li>
+            <li>Engineered real-time Jira data ingestion alongside daily SharePoint and Confluence syncs — unifying distributed enterprise knowledge into a single retrieval layer.</li>
+            <li>Designed the frontend interface and expanded the document ingestion pipeline to handle complex PDF, XLSX, and multi-format files.</li>
           </ul>
         </div>
       </article>
@@ -903,7 +1370,7 @@
           <p class="role-org"><strong>Quality Theorem</strong> · Bengaluru, India</p>
           <ul>
             <li>Developed web applications using PHP and the LAMP stack.</li>
-            <li>Built map-based device visualization interfaces with the Google Maps API to display real-time IoT device locations for smart-city infrastructure (smart water meters, connected sensors).</li>
+            <li>Built map-based device visualization interfaces with the Google Maps API to display real-time IoT device locations for smart-city infrastructure.</li>
           </ul>
         </div>
       </article>
@@ -924,17 +1391,17 @@
 
       <article class="project reveal">
         <header class="project-head">
-          <h3 class="project-name">GSOIS — <em>Global Sales Order Issue System</em></h3>
+          <h3 class="project-name">Global <em>Supply Chain Platform</em></h3>
           <span class="project-status">Production · 4 regions</span>
         </header>
-        <p class="project-tag-line">Global platform for managing sales-order issues inside Sony's One Supply Chain program.</p>
+        <p class="project-tag-line">Enterprise platform for end-to-end order lifecycle management across Sony's global supply chain.</p>
         <p class="project-desc">
-          React frontend, Spring Boot microservices, Spring Batch jobs. Integrates with SAP and other enterprise
-          systems for end-to-end order lifecycle across NA, EU, APAC, Japan. Recognized as Sony's Best App of the Year twice.
+          React frontend, Spring Boot microservices, Spring Batch jobs. Integrates with enterprise systems for
+          end-to-end order lifecycle across North America, Europe, APAC, and Japan. Recognized as Best App of the Year twice.
         </p>
         <div class="project-stats">
-          <div class="stat"><div class="v"><em>$2B</em></div><div class="k">Peak monthly orders</div></div>
-          <div class="stat"><div class="v"><em>99.9</em>%</div><div class="k">Uptime</div></div>
+          <div class="stat"><div class="v"><em>Billions</em></div><div class="k">Peak monthly volume</div></div>
+          <div class="stat"><div class="v">Near-<em>perfect</em></div><div class="k">Uptime</div></div>
           <div class="stat"><div class="v">4</div><div class="k">Global regions</div></div>
           <div class="stat"><div class="v"><em>2×</em></div><div class="k">Best App of Year</div></div>
         </div>
@@ -949,37 +1416,37 @@
           <h3 class="project-name">Agentic <em>SDLC Pipeline</em></h3>
           <span class="project-status">Internal · adopted across Sony</span>
         </header>
-        <p class="project-tag-line">Multi-agent software development workflow on AWS Kiro CLI.</p>
+        <p class="project-tag-line">Spec-driven multi-agent software development workflow.</p>
         <p class="project-desc">
-          Spec-driven: a requirements agent produces design &amp; implementation docs before any code is written. Then
+          A requirements agent produces design &amp; implementation docs before any code is written. Then
           parallel and sequential subagents fan out for implementation, spec review, and code-quality review — with
-          git worktree isolation, branch management, and automated MR creation end-to-end.
+          git worktree isolation, branch management, and automated merge request creation end-to-end.
         </p>
         <div class="project-stats">
-          <div class="stat"><div class="v"><em>Multi</em>-team</div><div class="k">Adoption at Sony</div></div>
+          <div class="stat"><div class="v"><em>Multi</em>-team</div><div class="k">Adoption</div></div>
           <div class="stat"><div class="v">Spec-first</div><div class="k">Methodology</div></div>
           <div class="stat"><div class="v">Multi-agent</div><div class="k">Orchestration</div></div>
         </div>
         <div class="tech">
-          <span>AWS Kiro CLI</span><span>LLM Agents</span><span>Git Worktrees</span><span>GitLab</span><span>Bash</span>
+          <span>LLM Agents</span><span>Git Worktrees</span><span>MCP</span><span>GitLab</span><span>Bash</span>
         </div>
       </article>
 
       <article class="project reveal">
         <header class="project-head">
-          <h3 class="project-name">GWX — <em>Global Web Experience</em></h3>
-          <span class="project-status">Production · www.sony.com</span>
+          <h3 class="project-name">Global <em>Web Platform</em></h3>
+          <span class="project-status">Production · Global</span>
         </header>
-        <p class="project-tag-line">Sony's global marketing &amp; ecommerce platform on Adobe AEM.</p>
+        <p class="project-tag-line">Sony's global marketing &amp; ecommerce platform.</p>
         <p class="project-desc">
           Built premature-publishing detection to prevent unintended content releases on the live site. Drove
           answer-engine-optimization (AEO) work to improve visibility in AI-driven search. Built an autonomous
-          site-traversal agent that generates Playwright tests — 150 Cypress tests migrated, 300+ functional
-          tests auto-generated. Led a Scala → Java migration POC using AI agents.
+          site-traversal agent that generates Playwright tests — migrated legacy Cypress tests and auto-generated
+          hundreds of functional tests. Led a Scala → Java migration POC using AI agents.
         </p>
         <div class="project-stats">
-          <div class="stat"><div class="v"><em>150</em></div><div class="k">Cypress → Playwright</div></div>
-          <div class="stat"><div class="v"><em>300+</em></div><div class="k">Auto-generated tests</div></div>
+          <div class="stat"><div class="v"><em>Hundreds</em></div><div class="k">Auto-generated tests</div></div>
+          <div class="stat"><div class="v">AEO</div><div class="k">AI search optimization</div></div>
         </div>
         <div class="tech">
           <span>Adobe AEM</span><span>Vue.js</span><span>Java</span><span>Scala</span><span>Playwright</span><span>Cypress</span>
@@ -988,14 +1455,14 @@
 
       <article class="project reveal">
         <header class="project-head">
-          <h3 class="project-name">AssistIQ</h3>
+          <h3 class="project-name">Enterprise <em>Knowledge Retrieval</em></h3>
           <span class="project-status">Production · Internal RAG</span>
         </header>
-        <p class="project-tag-line">AI-powered RAG for internal enterprise knowledge retrieval.</p>
+        <p class="project-tag-line">AI-powered RAG application for internal enterprise knowledge retrieval.</p>
         <p class="project-desc">
           Built on AWS Bedrock and Aurora pgvector. I built the frontend and contributed to the document ingestion
           pipeline — adding support for PDF, XLSX and other formats. Integrates real-time Jira data alongside
-          daily SharePoint and Confluence syncs across distributed enterprise content.
+          daily SharePoint and Confluence syncs, unifying distributed enterprise knowledge into a single retrieval layer.
         </p>
         <div class="tech">
           <span>AWS Bedrock</span><span>Aurora pgvector</span><span>RAG</span><span>React</span><span>Java</span>
@@ -1025,7 +1492,7 @@
       </div>
       <div class="skill-cat">
         <div class="k">// Backend</div>
-        <div class="v"><span>Spring Boot</span><span>Spring Batch</span><span>JPA / Hibernate</span><span>QueryDSL</span></div>
+        <div class="v"><span>Spring Boot</span><span>Spring Batch</span><span>JPA / Hibernate</span><span>QueryDSL</span><span>Scala</span><span>Play Framework</span></div>
       </div>
       <div class="skill-cat">
         <div class="k">// Data</div>
@@ -1041,13 +1508,13 @@
       <div class="skill-cat">
         <div class="k">// DevOps &amp; Testing</div>
         <div class="v">
-          <span>GitLab CI/CD</span><span>Docker</span><span>Git</span>
+          <span>GitLab CI/CD</span><span>GitHub Actions</span><span>Docker</span><span>Git</span>
           <span>Cucumber</span><span>Playwright</span><span>Cypress</span>
         </div>
       </div>
       <div class="skill-cat">
         <div class="k">// AI &amp; Agent Workflows</div>
-        <div class="v"><span>Claude Code</span><span>AWS Kiro CLI</span><span>MCP</span><span>LLM applications</span><span>RAG</span><span>Multi-agent orchestration</span><span>Spec-driven dev</span></div>
+        <div class="v"><span>MCP</span><span>LLM Applications</span><span>RAG</span><span>Multi-agent orchestration</span><span>Spec-driven dev</span></div>
       </div>
     </div>
   </div>
@@ -1073,8 +1540,8 @@
       <div class="panel">
         <div class="panel-title">// Awards</div>
         <ul class="stack-list">
-          <li><span>Sony CIO Award — GSOIS contributions</span><span class="meta">Sony</span></li>
-          <li><span>Best App of the Year — GSOIS</span><span class="meta">2× consecutive</span></li>
+          <li><span>Sony CIO Award — Application Team</span><span class="meta">Sony</span></li>
+          <li><span>Best App of the Year</span><span class="meta">2× consecutive</span></li>
           <li><span>Best Performer of the Quarter</span><span class="meta">Sony</span></li>
         </ul>
       </div>
@@ -1127,6 +1594,66 @@
   </div>
 </footer>
 
+<!-- Scroll-to-top button -->
+<button class="scroll-top" id="scroll-top" aria-label="Scroll to top" title="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
+<!-- Resume Modal -->
+<div class="resume-overlay" id="resume-overlay">
+  <div class="resume-modal">
+    <div class="emoji">👀</div>
+    <h3>Oh, you're <em>interested?</em></h3>
+    <p>Love to hear it. I don't keep a downloadable resume floating around — but I'd much rather have a real conversation. Drop me a line and let's talk.</p>
+    <div class="cta-row">
+      <a class="cta-primary" href="mailto:manukashyap.u.v@gmail.com">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        Say hello
+      </a>
+      <button class="cta-secondary" id="resume-close">Maybe later</button>
+    </div>
+  </div>
+</div>
+
+<!-- Ask AI Modal -->
+<div class="ai-overlay" id="ai-overlay">
+  <div class="ai-modal">
+    <div class="ai-modal-head">
+      <h3>Ask AI <em>about me</em></h3>
+      <button class="ai-modal-close" id="ai-close" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="ai-prompt-box">
+      <p>Browse manukashyap.in and answer my questions about Manukashyap — his experience, skills, projects, and background.</p>
+      <button class="copy-btn" id="ai-copy">Copy</button>
+    </div>
+    <p class="ai-prompt-hint">Copy the prompt above, then open your favorite AI chat ↓</p>
+    <div class="ai-links">
+      <a class="ai-link" href="https://chatgpt.com/" target="_blank" rel="noopener">
+        <span class="ai-icon">🤖</span>
+        ChatGPT
+        <span class="arrow">↗</span>
+      </a>
+      <a class="ai-link" href="https://claude.ai/new" target="_blank" rel="noopener">
+        <span class="ai-icon">✨</span>
+        Claude
+        <span class="arrow">↗</span>
+      </a>
+      <a class="ai-link" href="https://gemini.google.com/app" target="_blank" rel="noopener">
+        <span class="ai-icon">💎</span>
+        Gemini
+        <span class="arrow">↗</span>
+      </a>
+      <a class="ai-link" id="ai-perplexity" href="#" target="_blank" rel="noopener">
+        <span class="ai-icon">🔍</span>
+        Perplexity
+        <span class="arrow">↗</span>
+      </a>
+    </div>
+  </div>
+</div>
+
 <script>
   // ── Theme: respect system, persist user override ──
   (function () {
@@ -1158,11 +1685,36 @@
     );
   })();
 
-  // ── Nav shadow on scroll ──
+  // ── Nav shadow on scroll + scroll-to-top ──
   const nav = document.getElementById('nav');
-  const onScroll = () => nav.classList.toggle('is-scrolled', window.scrollY > 8);
-  onScroll();
-  window.addEventListener('scroll', onScroll, { passive: true });
+  const scrollTopBtn = document.getElementById('scroll-top');
+  const handleScroll = () => {
+    nav.classList.toggle('is-scrolled', window.scrollY > 8);
+    scrollTopBtn.classList.toggle('show', window.scrollY > 600);
+  };
+  handleScroll();
+  window.addEventListener('scroll', handleScroll, { passive: true });
+
+  scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // ── Mobile hamburger menu ──
+  const hamburger = document.getElementById('hamburger');
+  const drawer = document.getElementById('mobile-drawer');
+  const backdrop = document.getElementById('drawer-backdrop');
+  const toggleDrawer = (open) => {
+    const isOpen = typeof open === 'boolean' ? open : !drawer.classList.contains('is-open');
+    drawer.classList.toggle('is-open', isOpen);
+    backdrop.classList.toggle('is-open', isOpen);
+    hamburger.classList.toggle('is-open', isOpen);
+    hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+  };
+  hamburger.addEventListener('click', () => toggleDrawer());
+  backdrop.addEventListener('click', () => toggleDrawer(false));
+  drawer.querySelectorAll('.drawer-link').forEach(link => {
+    link.addEventListener('click', () => toggleDrawer(false));
+  });
 
   // ── Scroll reveals ──
   const io = new IntersectionObserver((entries) => {
@@ -1175,8 +1727,49 @@
   }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  // ── Resume: open print dialog ──
-  document.getElementById('resume-btn').addEventListener('click', () => window.print());
+  // ── Resume: cheeky modal ──
+  const overlay = document.getElementById('resume-overlay');
+  document.getElementById('resume-btn').addEventListener('click', () => {
+    overlay.classList.add('show');
+  });
+  document.getElementById('resume-close').addEventListener('click', () => {
+    overlay.classList.remove('show');
+  });
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) overlay.classList.remove('show');
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      overlay.classList.remove('show');
+      aiOverlay.classList.remove('show');
+    }
+  });
+
+  // ── Ask AI modal ──
+  const aiOverlay = document.getElementById('ai-overlay');
+  const aiPrompt = 'Browse manukashyap.in and answer my questions about Manukashyap \u2014 his experience, skills, projects, and background.';
+
+  // Set Perplexity link with pre-filled query
+  document.getElementById('ai-perplexity').href =
+    'https://www.perplexity.ai/search?q=' + encodeURIComponent(aiPrompt);
+
+  document.getElementById('ask-ai-btn').addEventListener('click', () => {
+    aiOverlay.classList.add('show');
+  });
+  document.getElementById('ai-close').addEventListener('click', () => {
+    aiOverlay.classList.remove('show');
+  });
+  aiOverlay.addEventListener('click', (e) => {
+    if (e.target === aiOverlay) aiOverlay.classList.remove('show');
+  });
+
+  // Copy prompt
+  document.getElementById('ai-copy').addEventListener('click', function() {
+    navigator.clipboard.writeText(aiPrompt).then(() => {
+      this.textContent = 'Copied!';
+      setTimeout(() => { this.textContent = 'Copy'; }, 2000);
+    });
+  });
 </script>
 
 </body>
