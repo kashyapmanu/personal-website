@@ -1,0 +1,22 @@
+# Manukashyap U. V.
+
+> Senior Software Engineer at Sony in Bengaluru, India. Backend specialist (Java, Spring Boot) with full-stack reach (React, Vue.js) and recent LLM/RAG production experience.
+
+Manukashyap (Manu) has spent five years at Sony building and scaling a global supply chain platform that handles billions in monthly order volume across North America, Europe, APAC, and Japan — awarded Best App of the Year two years running. More recently he has been designing autonomous multi-agent SDLC workflows that compress the ticket-to-code lifecycle, now adopted across multiple engineering teams.
+
+He is open to senior and staff engineering roles in Bengaluru, India.
+
+## Contact
+
+- Email: manukashyap.u.v@gmail.com
+- LinkedIn: https://www.linkedin.com/in/manukashyapuv/
+- GitHub: https://github.com/kashyapmanu
+
+## Skills
+
+Java, Spring Boot, Spring Batch, React, Vue.js, AWS, PostgreSQL, Kafka, Docker, LLM, RAG, Multi-agent Systems, Playwright
+
+## Pages
+
+- [Home](https://manukashyap.in/): Portfolio, experience, projects, and contact
+- [Refactoring the Monolith: A Weekend Story](https://manukashyap.in/refactoring-monolith.html): Technical blog post about extracting a microservice from a legacy Java monolith using the Strangler Fig pattern

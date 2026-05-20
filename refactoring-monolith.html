@@ -1,20 +1,12 @@
 <!doctype html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-V69Q0HNCSK"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-V69Q0HNCSK');
-</script>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Manukashyap U. V. — Senior Software Engineer</title>
-<meta name="description" content="Senior full-stack engineer at Sony building global-scale supply chain platforms and agentic developer tools. Java, Spring, React, AWS, LLM/RAG." />
+<title>Refactoring the Monolith: A Weekend Story — Manukashyap U. V.</title>
+<meta name="description" content="How we extracted a logistics routing engine from a 5-year-old Spring Boot monolith using the Strangler Fig pattern, Kafka events, and throwaway integration tests." />
 <meta name="color-scheme" content="light dark" />
-<link rel="canonical" href="https://manukashyap.in/" />
+<link rel="canonical" href="https://manukashyap.in/refactoring-monolith.html" />
 <meta name="robots" content="index, follow, max-image-preview:large" />
 <meta name="author" content="Manukashyap U. V." />
 <meta name="theme-color" content="#b8533a" />
@@ -25,95 +17,66 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
 <!-- Open Graph -->
-<meta property="og:type" content="website" />
-<meta property="og:title" content="Manukashyap U. V. — Senior Software Engineer" />
-<meta property="og:description" content="Senior full-stack engineer at Sony building global-scale supply chain platforms and agentic developer tools." />
-<meta property="og:url" content="https://manukashyap.in" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Refactoring the Monolith: A Weekend Story — Manukashyap U. V." />
+<meta property="og:description" content="How we extracted a logistics routing engine from a 5-year-old Spring Boot monolith using the Strangler Fig pattern, Kafka events, and throwaway integration tests." />
+<meta property="og:url" content="https://manukashyap.in/refactoring-monolith.html" />
 <meta property="og:image" content="https://manukashyap.in/assets/favicon-512.png" />
 <meta property="og:image:width" content="512" />
 <meta property="og:image:height" content="512" />
+<meta property="article:published_time" content="2026-01-05T00:00:00+05:30" />
+<meta property="article:author" content="Manukashyap U. V." />
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="Manukashyap U. V. — Senior Software Engineer" />
-<meta name="twitter:description" content="Senior full-stack engineer at Sony building global-scale supply chain platforms and agentic developer tools." />
+<meta name="twitter:title" content="Refactoring the Monolith: A Weekend Story" />
+<meta name="twitter:description" content="How we extracted a logistics routing engine from a 5-year-old Spring Boot monolith using the Strangler Fig pattern, Kafka events, and throwaway integration tests." />
 <meta name="twitter:image" content="https://manukashyap.in/assets/favicon-512.png" />
 
 <!-- Structured Data (JSON-LD) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Manukashyap Ubaradka Venkatramana",
-  "alternateName": "Manukashyap U. V.",
-  "url": "https://manukashyap.in",
-  "image": "https://manukashyap.in/assets/manukashyap.jpg",
-  "jobTitle": "Senior Software Engineer",
-  "worksFor": {
-    "@type": "Organization",
-    "name": "Sony"
+  "@type": "BlogPosting",
+  "headline": "Refactoring the Monolith: A Weekend Story",
+  "description": "How we extracted a logistics routing engine from a 5-year-old Spring Boot monolith using the Strangler Fig pattern, Kafka events, and throwaway integration tests.",
+  "url": "https://manukashyap.in/refactoring-monolith.html",
+  "datePublished": "2026-01-05T00:00:00+05:30",
+  "dateModified": "2026-01-05T00:00:00+05:30",
+  "author": {
+    "@type": "Person",
+    "name": "Manukashyap U. V.",
+    "url": "https://manukashyap.in"
   },
-  "knowsAbout": ["Java", "Spring Boot", "React", "Vue.js", "AWS", "LLM", "RAG", "Multi-agent Systems", "Supply Chain"],
-  "alumniOf": {
-    "@type": "CollegeOrUniversity",
-    "name": "Nitte University"
+  "publisher": {
+    "@type": "Person",
+    "name": "Manukashyap U. V.",
+    "url": "https://manukashyap.in"
   },
-  "sameAs": [
-    "https://www.linkedin.com/in/manukashyapuv/",
-    "https://github.com/kashyapmanu"
-  ],
-  "email": "manukashyap.u.v@gmail.com",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Bengaluru",
-    "addressCountry": "IN"
-  }
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://manukashyap.in/refactoring-monolith.html"
+  },
+  "keywords": ["Spring Boot", "microservices", "refactoring", "monolith", "Strangler Fig", "Kafka", "Java", "supply chain"],
+  "articleSection": "Engineering"
 }
 </script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@type": "BreadcrumbList",
+  "itemListElement": [
     {
-      "@type": "Question",
-      "name": "Who is Manukashyap U. V.?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Manukashyap U. V. (Manu) is a Senior Software Engineer at Sony in Bengaluru, India. For the past five years he has built and scaled Sony's global supply chain platform, handling billions in monthly order volume across North America, Europe, APAC, and Japan. He also designs autonomous AI-agent workflows that compress the ticket-to-code lifecycle."
-      }
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://manukashyap.in/"
     },
     {
-      "@type": "Question",
-      "name": "What does Manukashyap specialise in?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Manukashyap specialises in Java, Spring Boot, React, AWS, and LLM/RAG systems. His core focus is backend distributed systems and supply chain platforms, with recent work in agentic developer tooling and multi-agent SDLC pipelines."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Where does Manukashyap work?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Manukashyap works at Sony as a Senior Software Engineer, based in Bengaluru, India. He has been at Sony since 2021."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How can I contact Manukashyap?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "You can reach Manukashyap at manukashyap.u.v@gmail.com or connect with him on LinkedIn at linkedin.com/in/manukashyapuv/."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is Manukashyap open to new roles?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Manukashyap is open to senior and staff engineering roles in Bengaluru, India."
-      }
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Refactoring the Monolith: A Weekend Story",
+      "item": "https://manukashyap.in/refactoring-monolith.html"
     }
   ]
 }
@@ -917,6 +880,47 @@
   }
   .ai-link:hover .arrow { transform: translate(2px, -2px); }
 
+  /* ── Writing / Blog ────────────────────────────────── */
+  .writing-list { display: grid; gap: 0; }
+  .article-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 40px;
+    padding: 32px 0;
+    border-top: 1px solid var(--line);
+    text-decoration: none;
+    transition: all 220ms ease;
+  }
+  .article-row:first-child { border-top: 0; padding-top: 0; }
+  .article-row:hover { opacity: 0.8; }
+  @media (max-width: 640px) {
+    .article-row { grid-template-columns: 1fr; gap: 12px; padding: 24px 0; }
+  }
+  .article-date {
+    font-family: 'Geist Mono', monospace;
+    font-size: 13px;
+    color: var(--muted);
+    padding-top: 4px;
+  }
+  .article-content h3 {
+    font-family: 'Instrument Serif', serif;
+    font-weight: 400;
+    font-size: 26px;
+    letter-spacing: -0.01em;
+    margin: 0 0 12px;
+    color: var(--ink);
+    transition: color 160ms ease;
+  }
+  .article-row:hover .article-content h3 { color: var(--accent); }
+  .article-content h3 em { font-style: italic; color: var(--ink-2); }
+  .article-snippet {
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--ink-2);
+    margin: 0;
+    max-width: 64ch;
+  }
+
   /* ── Certs & Awards ────────────────────────────────── */
   .cards-2col {
     display: grid;
@@ -1230,6 +1234,7 @@
   }
 </style>
 </head>
+
 <body>
 
 <!-- ───── NAV ───── -->
@@ -1240,10 +1245,11 @@
       Manukashyap U. V. <em>· senior engineer</em>
     </a>
     <nav class="nav-links" aria-label="Primary">
-      <a href="#about" class="link"><span class="num">01</span>About</a>
-      <a href="#work" class="link"><span class="num">02</span>Work</a>
-      <a href="#projects" class="link"><span class="num">03</span>Projects</a>
-      <a href="#contact" class="link"><span class="num">04</span>Contact</a>
+      <a href="index.html#about" class="link"><span class="num">01</span>About</a>
+      <a href="index.html#work" class="link"><span class="num">02</span>Work</a>
+      <a href="index.html#projects" class="link"><span class="num">03</span>Projects</a>
+      <a href="index.html#writing" class="link"><span class="num">04</span>Writing</a>
+      <a href="index.html#contact" class="link"><span class="num">05</span>Contact</a>
     </nav>
     <div class="nav-actions">
       <button class="hamburger" id="hamburger" aria-label="Open menu">
@@ -1266,389 +1272,44 @@
   </div>
 </header>
 
-<!-- Mobile drawer -->
-<div class="drawer-backdrop" id="drawer-backdrop"></div>
-<nav class="mobile-drawer" id="mobile-drawer" aria-label="Mobile navigation">
-  <a href="#about" class="drawer-link"><span class="num">01</span>About</a>
-  <a href="#work" class="drawer-link"><span class="num">02</span>Work</a>
-  <a href="#projects" class="drawer-link"><span class="num">03</span>Projects</a>
-  <a href="#contact" class="drawer-link"><span class="num">04</span>Contact</a>
-</nav>
 
-<a id="top"></a>
 <main>
+<section style="padding-top: 64px; min-height: 70vh;">
+  <div class="wrap prose">
+    <a href="index.html#writing" style="font-family: 'Geist Mono', monospace; font-size: 13px; color: var(--muted); text-decoration: none; margin-bottom: 32px; display: inline-block;">← Back to home</a>
+    <article>
+      <header>
+        <div style="font-family: 'Geist Mono', monospace; font-size: 13px; color: var(--accent); margin-bottom: 12px;">
+          <time datetime="2026-01-05">Jan 05, 2026</time>
+        </div>
+        <h1 style="font-family: 'Instrument Serif', serif; font-size: 48px; margin: 0 0 32px; color: var(--ink); line-height: 1.1;">Refactoring the Monolith: <em>A Weekend Story</em></h1>
+      </header>
 
-<!-- ───── HERO ───── -->
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <div class="eyebrow stagger"><span class="pulse"></span> Open to senior / staff roles · Bengaluru, India</div>
-      <h1 class="stagger">
-        Senior engineer at <span class="ital">Sony</span> —<br>
-        supply chain <span class="ampersand">&amp;</span><br>
-        <span class="ital">developer tooling.</span>
-      </h1>
-      <p class="hero-lede stagger">
-        I'm <strong>Manukashyap</strong>, a senior software engineer at <strong>Sony</strong>.
-        For the past five years I've built and scaled Sony's global supply chain platform — handling
-        billions in monthly order volume across four regions. More recently I've been designing autonomous
-        AI-agent workflows that compress the ticket-to-code lifecycle, now adopted across multiple engineering teams.
-      </p>
-      <div class="hero-meta stagger">
-        <div><span class="lbl">Now</span> Senior SWE, Sony</div>
-        <div><span class="lbl">Loc</span> Bengaluru, IN</div>
-        <div><span class="lbl">Mail</span> <a href="mailto:manukashyap.u.v@gmail.com">manukashyap.u.v@gmail.com</a></div>
-      </div>
-    </div>
-    <div class="avatar-wrap" aria-hidden="true">
-      <div class="avatar-ring"></div>
-      <div class="avatar">
-        <img src="assets/manukashyap.jpg" alt="Portrait of Manukashyap" width="400" height="400" loading="lazy" decoding="async" />
-      </div>
-    </div>
+      <h2>The problem with legacy monoliths</h2>
+
+      <p>There's a certain kind of fear that only a five-year-old Spring Boot monolith can inspire. You know the one—the <code>OrderService.java</code> file that has grown to 4,000 lines, where every dependency is injected, and touching a boolean flag somehow breaks the invoicing system.</p>
+
+      <p>A few months ago, we decided it was finally time to extract the logistics routing engine out of the main supply chain monolith.</p>
+
+      <p>It started innocently enough. "We'll just draw a boundary around these packages," we said. "We'll use interfaces."</p>
+
+      <p>What followed was a weekend of untangling a Gordian knot of JPA entities. The problem with legacy systems isn't usually the logic; it's the state. Entities that were lazily loaded in one corner of the application were suddenly throwing <code>LazyInitializationException</code>s because they were now crossing service boundaries.</p>
+
+      <h2>How we extracted the logistics service</h2>
+
+      <p>Here's how we survived it:</p>
+      <ol>
+        <li style="margin-bottom: 12px;"><strong>Strangler Fig Pattern:</strong> We didn't flip a switch. We deployed the new service alongside the old one and used feature flags to route a tiny percentage of non-critical traffic to it first.</li>
+        <li style="margin-bottom: 12px;"><strong>Data Replication over Distributed Transactions:</strong> Instead of doing two-phase commits (which nobody wants), we relied on eventual consistency. We published domain events to Kafka when the monolith updated an order, and the new logistics service consumed them to build its own read model.</li>
+        <li style="margin-bottom: 12px;"><strong>Writing throwaway tests:</strong> We wrote high-level integration tests that we knew we were going to delete. Their only purpose was to prove that the outputs matched before and after the extraction.</li>
+      </ol>
+
+      <h2>The outcome</h2>
+
+      <p>By Monday morning, staging was stable. It wasn't pretty, and we still had a lot of cleanup to do, but the monolith was a little bit lighter.</p>
+    </article>
   </div>
 </section>
-
-<!-- ───── ABOUT ───── -->
-<section id="about">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="section-num">01 / About</span>
-      <h2 class="section-title">Backend at heart, <em>full-stack in practice.</em></h2>
-    </div>
-    <div class="two-col reveal">
-      <div class="col-label">// Bio</div>
-      <div class="prose">
-        <p>
-          I joined Sony in 2021 and have been part of the team that built a global supply chain platform
-          from early mockups into a production system serving <strong>North America, Europe, APAC, and Japan</strong>.
-          At peak it handles billions in monthly order volume, and it's been recognized as <strong>Best App of the Year
-          two years running</strong>.
-        </p>
-        <p>
-          My core is <strong>Java / Spring Boot</strong> — services, Spring Batch pipelines, and the careful work of
-          keeping a critical system reliable. But I'm equally comfortable on <strong>React / Vue</strong> frontends,
-          and over the last year I've shipped LLM and RAG systems in production.
-        </p>
-        <p>
-          More recently, I've been building <em>tooling for the engineers building the software</em> — designing
-          autonomous agent workflows that compress the ticket-to-code lifecycle, now adopted across multiple
-          engineering teams.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ───── NOW ───── -->
-<section style="padding-top:0;">
-  <div class="wrap">
-    <div class="two-col reveal">
-      <div class="col-label">// Now</div>
-      <div class="now-card">
-        <h3>What I'm <em>working on</em></h3>
-        <div style="font-family:'Geist Mono',monospace;font-size:11.5px;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase;">Updated · May 2026</div>
-        <ul class="now-list">
-          <li>Scaling a multi-agent SDLC pipeline across multiple engineering teams — git worktrees, parallel subagents, automated merge requests.</li>
-          <li>Expanding an AI test-generation agent: hundreds of Playwright tests auto-authored, rollout to a global web platform in flight.</li>
-          <li>Leading a pod of 6 within a 30-person cross-functional team — coordinating delivery across global stakeholders.</li>
-          <li>Reading more about evaluation frameworks for agentic systems and spec-first development.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ───── EXPERIENCE ───── -->
-<section id="work">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="section-num">02 / Experience</span>
-      <h2 class="section-title">Five years, <em>Sony.</em></h2>
-    </div>
-
-    <div class="timeline">
-
-      <article class="role reveal">
-        <div class="role-period">
-          Jan 2025 — Present
-          <div class="current">Current</div>
-        </div>
-        <div>
-          <h3 class="role-title">Senior Software Engineer</h3>
-          <p class="role-org"><strong>Sony</strong> · Bengaluru, India</p>
-
-          <div class="project-tag">Global Supply Chain Platform</div>
-          <ul>
-            <li>Own critical components across dozens of Spring Batch repositories and multiple microservices forming the core of Sony's global supply chain platform — sustaining billions in peak monthly order volume across North America, Europe, APAC, and Japan without service degradation.</li>
-            <li>Lead a pod of 6 within a 30-person cross-functional team, driving delivery across global regions and translating region-specific business requirements into a unified platform.</li>
-            <li>Drove service reliability to near-perfect uptime through targeted resilience hardening — achieving zero unplanned outages over 12 months.</li>
-          </ul>
-
-          <div class="project-tag">Global Web Platform</div>
-          <ul>
-            <li>Engineered a premature publishing detection system for a global marketing platform — intercepting accidental content activations and preventing high-visibility outages.</li>
-            <li>Spearheaded Answer Engine Optimization (AEO) initiatives to align content structure and metadata to LLM retrieval patterns — increasing brand visibility across AI platforms and establishing a standard rolling out across all product categories.</li>
-            <li>Initiated and led a POC for an AI-agent-driven Scala-to-Java codebase migration — engineering an autonomous migration loop that converted the application with a 100% pass rate across 230+ tests and zero performance degradation.</li>
-          </ul>
-
-          <div class="project-tag">Agentic SDLC &amp; Automation Tooling</div>
-          <ul>
-            <li>Designed and deployed a spec-driven multi-agent SDLC automation workflow, adopted by 20+ engineers and currently scaling organization-wide.</li>
-            <li>Architected autonomous agents for requirement gathering, code implementation, and automated merge request creation with git worktree isolation — compressing the ticket-to-merge-request lifecycle from hours to minutes.</li>
-            <li>Partnered with QA leadership to build an AI agent that autonomously crawls web applications and generates Playwright test cases from live site behavior — migrated legacy Cypress tests and auto-generated hundreds of functional test cases, accelerating QA cycles significantly.</li>
-          </ul>
-        </div>
-      </article>
-
-      <article class="role reveal">
-        <div class="role-period">Dec 2021 — Dec 2024</div>
-        <div>
-          <h3 class="role-title">Software Engineer</h3>
-          <p class="role-org"><strong>Sony</strong> · Bengaluru, India</p>
-
-          <div class="project-tag">Global Supply Chain Platform</div>
-          <ul>
-            <li>Joined the platform in its early phase — helped build it from UI mockups to a production-grade full-stack system.</li>
-            <li>Developed responsive React interfaces and backend APIs in Java/Spring Boot for global supply chain users.</li>
-            <li>Designed and implemented Spring Batch jobs for purchase-order processing, delivery timeline tracking, and cargo logistics — covering port/airport destinations and order distribution across shipping routes.</li>
-            <li>Coordinated a phased multi-region rollout across North America, Europe, and Asia — working directly with stakeholders in Singapore and Japan to adapt a unified global data model.</li>
-            <li>Built a full-stack bulk ingestion feature: multipart file upload and reusable Java processing utilities handling 100K+ rows across multiple business workflows.</li>
-          </ul>
-
-          <div class="project-tag">Enterprise Knowledge Retrieval (RAG)</div>
-          <ul>
-            <li>Built an in-production AI-powered RAG application for internal enterprise knowledge retrieval — accelerating knowledge discovery and reducing redundant engineering support queries across hundreds of internal users.</li>
-            <li>Engineered real-time Jira data ingestion alongside daily SharePoint and Confluence syncs — unifying distributed enterprise knowledge into a single retrieval layer.</li>
-            <li>Designed the frontend interface and expanded the document ingestion pipeline to handle complex PDF, XLSX, and multi-format files.</li>
-          </ul>
-        </div>
-      </article>
-
-      <article class="role reveal">
-        <div class="role-period">Nov 2020 — Apr 2021</div>
-        <div>
-          <h3 class="role-title">PHP Developer Intern</h3>
-          <p class="role-org"><strong>Quality Theorem</strong> · Bengaluru, India</p>
-          <ul>
-            <li>Developed web applications using PHP and the LAMP stack.</li>
-            <li>Built map-based device visualization interfaces with the Google Maps API to display real-time IoT device locations for smart-city infrastructure.</li>
-          </ul>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<!-- ───── PROJECTS ───── -->
-<section id="projects">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="section-num">03 / Selected Projects</span>
-      <h2 class="section-title">Some things <em>I've worked on.</em></h2>
-    </div>
-
-    <div class="projects">
-
-      <article class="project reveal">
-        <header class="project-head">
-          <h3 class="project-name">Global <em>Supply Chain Platform</em></h3>
-          <span class="project-status">Production · 4 regions</span>
-        </header>
-        <p class="project-tag-line">Enterprise platform for end-to-end order lifecycle management across Sony's global supply chain.</p>
-        <p class="project-desc">
-          React frontend, Spring Boot microservices, Spring Batch jobs. Integrates with enterprise systems for
-          end-to-end order lifecycle across North America, Europe, APAC, and Japan. Recognized as Best App of the Year twice.
-        </p>
-        <div class="project-stats">
-          <div class="stat"><div class="v"><em>Billions</em></div><div class="k">Peak monthly volume</div></div>
-          <div class="stat"><div class="v">Near-<em>perfect</em></div><div class="k">Uptime</div></div>
-          <div class="stat"><div class="v">4</div><div class="k">Global regions</div></div>
-          <div class="stat"><div class="v"><em>2×</em></div><div class="k">Best App of Year</div></div>
-        </div>
-        <div class="tech">
-          <span>Java</span><span>Spring Boot</span><span>Spring Batch</span><span>JPA · Hibernate</span>
-          <span>QueryDSL</span><span>React</span><span>Oracle RDS</span><span>AWS</span><span>GitLab CI</span>
-        </div>
-      </article>
-
-      <article class="project reveal">
-        <header class="project-head">
-          <h3 class="project-name">Agentic <em>SDLC Pipeline</em></h3>
-          <span class="project-status">Internal · adopted across Sony</span>
-        </header>
-        <p class="project-tag-line">Spec-driven multi-agent software development workflow.</p>
-        <p class="project-desc">
-          A requirements agent produces design &amp; implementation docs before any code is written. Then
-          parallel and sequential subagents fan out for implementation, spec review, and code-quality review — with
-          git worktree isolation, branch management, and automated merge request creation end-to-end.
-        </p>
-        <div class="project-stats">
-          <div class="stat"><div class="v"><em>Multi</em>-team</div><div class="k">Adoption</div></div>
-          <div class="stat"><div class="v">Spec-first</div><div class="k">Methodology</div></div>
-          <div class="stat"><div class="v">Multi-agent</div><div class="k">Orchestration</div></div>
-        </div>
-        <div class="tech">
-          <span>LLM Agents</span><span>Git Worktrees</span><span>MCP</span><span>GitLab</span><span>Bash</span>
-        </div>
-      </article>
-
-      <article class="project reveal">
-        <header class="project-head">
-          <h3 class="project-name">Global <em>Web Platform</em></h3>
-          <span class="project-status">Production · Global</span>
-        </header>
-        <p class="project-tag-line">Sony's global marketing &amp; ecommerce platform.</p>
-        <p class="project-desc">
-          Built premature-publishing detection to prevent unintended content releases on the live site. Drove
-          answer-engine-optimization (AEO) work to improve visibility in AI-driven search. Built an autonomous
-          site-traversal agent that generates Playwright tests — migrated legacy Cypress tests and auto-generated
-          hundreds of functional tests. Led a Scala → Java migration POC using AI agents.
-        </p>
-        <div class="project-stats">
-          <div class="stat"><div class="v"><em>Hundreds</em></div><div class="k">Auto-generated tests</div></div>
-          <div class="stat"><div class="v">AEO</div><div class="k">AI search optimization</div></div>
-        </div>
-        <div class="tech">
-          <span>Adobe AEM</span><span>Vue.js</span><span>Java</span><span>Scala</span><span>Playwright</span><span>Cypress</span>
-        </div>
-      </article>
-
-      <article class="project reveal">
-        <header class="project-head">
-          <h3 class="project-name">Enterprise <em>Knowledge Retrieval</em></h3>
-          <span class="project-status">Production · Internal RAG</span>
-        </header>
-        <p class="project-tag-line">AI-powered RAG application for internal enterprise knowledge retrieval.</p>
-        <p class="project-desc">
-          Built on AWS Bedrock and Aurora pgvector. I built the frontend and contributed to the document ingestion
-          pipeline — adding support for PDF, XLSX and other formats. Integrates real-time Jira data alongside
-          daily SharePoint and Confluence syncs, unifying distributed enterprise knowledge into a single retrieval layer.
-        </p>
-        <div class="tech">
-          <span>AWS Bedrock</span><span>Aurora pgvector</span><span>RAG</span><span>React</span><span>Java</span>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<!-- ───── SKILLS ───── -->
-<section id="skills">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="section-num">04 / Stack</span>
-      <h2 class="section-title">What I <em>build with.</em></h2>
-    </div>
-
-    <div class="skill-grid reveal">
-      <div class="skill-cat">
-        <div class="k">// Languages</div>
-        <div class="v"><span>Java</span><span>JavaScript</span><span>Python</span><span>SQL</span></div>
-      </div>
-      <div class="skill-cat">
-        <div class="k">// Frontend</div>
-        <div class="v"><span>React</span><span>Vue.js</span></div>
-      </div>
-      <div class="skill-cat">
-        <div class="k">// Backend</div>
-        <div class="v"><span>Spring Boot</span><span>Spring Batch</span><span>JPA / Hibernate</span><span>QueryDSL</span><span>Scala</span><span>Play Framework</span></div>
-      </div>
-      <div class="skill-cat">
-        <div class="k">// Data</div>
-        <div class="v"><span>Oracle RDS</span><span>AWS Aurora (pgvector)</span></div>
-      </div>
-      <div class="skill-cat">
-        <div class="k">// Cloud &amp; Platform</div>
-        <div class="v">
-          <span>AWS — S3</span><span>EC2</span><span>ECS</span><span>Fargate</span><span>ALB</span>
-          <span>SQS</span><span>SES</span><span>CloudWatch</span><span>Bedrock</span><span>Azure AI / LLM</span><span>Adobe AEM</span>
-        </div>
-      </div>
-      <div class="skill-cat">
-        <div class="k">// DevOps &amp; Testing</div>
-        <div class="v">
-          <span>GitLab CI/CD</span><span>GitHub Actions</span><span>Docker</span><span>Git</span>
-          <span>Cucumber</span><span>Playwright</span><span>Cypress</span>
-        </div>
-      </div>
-      <div class="skill-cat">
-        <div class="k">// AI &amp; Agent Workflows</div>
-        <div class="v"><span>MCP</span><span>LLM Applications</span><span>RAG</span><span>Multi-agent orchestration</span><span>Spec-driven dev</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ───── CERTS & AWARDS ───── -->
-<section id="recognition">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="section-num">05 / Recognition</span>
-      <h2 class="section-title">Certifications <em>&amp; awards.</em></h2>
-    </div>
-
-    <div class="cards-2col reveal">
-      <div class="panel">
-        <div class="panel-title">// Certifications</div>
-        <ul class="stack-list">
-          <li><span>AWS Certified Developer — Associate</span><span class="meta">AWS</span></li>
-          <li><span>AWS Certified AI Practitioner</span><span class="meta">AWS</span></li>
-          <li><span>Microsoft Certified: Azure AI Fundamentals</span><span class="meta">AI-900</span></li>
-        </ul>
-      </div>
-      <div class="panel">
-        <div class="panel-title">// Awards</div>
-        <ul class="stack-list">
-          <li><span>Sony CIO Award — Application Team</span><span class="meta">Sony</span></li>
-          <li><span>Best App of the Year</span><span class="meta">2× consecutive</span></li>
-          <li><span>Best Performer of the Quarter</span><span class="meta">Sony</span></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ───── EDUCATION ───── -->
-<section id="education">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="section-num">06 / Education</span>
-      <h2 class="section-title">Where I <em>studied.</em></h2>
-    </div>
-
-    <div class="reveal">
-      <div class="edu" style="border-top:0;padding-top:0;">
-        <div class="when">2017 — 2021</div>
-        <div class="what">
-          B.Tech. in Computer Science
-          <span class="org">Nitte University · Mangalore, India</span>
-        </div>
-        <div class="grade">CGPA 8.6 / 10</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ───── CONTACT ───── -->
-<section id="contact" class="contact">
-  <div class="wrap">
-    <div class="reveal">
-      <div class="small">07 / Contact</div>
-      <h2>Happy to <em>chat.</em></h2>
-      <a class="email" href="mailto:manukashyap.u.v@gmail.com">manukashyap.u.v@gmail.com</a>
-      <div class="socials">
-        <a href="https://www.linkedin.com/in/manukashyapuv/" target="_blank" rel="noopener">LinkedIn <span class="arrow">↗</span></a>
-        <a href="https://github.com/kashyapmanu" target="_blank" rel="noopener">GitHub <span class="arrow">↗</span></a>
-        <a href="http://manukashyap.in" target="_blank" rel="noopener">manukashyap.in <span class="arrow">↗</span></a>
-        <a href="tel:+918547517530">+91 8547 517 530</a>
-      </div>
-    </div>
-  </div>
-</section>
-
 </main>
 
 <footer>

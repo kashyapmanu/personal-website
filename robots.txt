@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow:
+
+Sitemap: https://manukashyap.in/sitemap.xml
+LLMs: https://manukashyap.in/llms.txt
