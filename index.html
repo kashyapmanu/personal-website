@@ -119,9 +119,12 @@
 }
 </script>
 
+<!-- Preload LCP image -->
+<link rel="preload" as="image" href="assets/manukashyap.jpg" fetchpriority="high">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
   /* ── Tokens ─────────────────────────────────────────── */
@@ -165,6 +168,24 @@
     --accent: #e8865f; --accent-soft: #2a1f1b; --selection: #4a2a1f;
     --shadow: 0 1px 0 rgba(0,0,0,0.4), 0 24px 48px -24px rgba(0,0,0,0.6);
   }
+
+  /* ── Skip link ─────────────────────────────────────── */
+  .skip-link {
+    position: absolute;
+    top: -56px;
+    left: 16px;
+    z-index: 9999;
+    padding: 10px 18px;
+    background: var(--accent);
+    color: #fff;
+    font-family: 'Geist', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 0 0 8px 8px;
+    text-decoration: none;
+    transition: top 200ms ease;
+  }
+  .skip-link:focus { top: 0; outline: 2px solid #fff; outline-offset: 2px; }
 
   * { box-sizing: border-box; }
   ::selection { background: var(--selection); color: var(--ink); }
@@ -240,7 +261,7 @@
   .mark em { font-style: italic; color: var(--muted); font-size: 16px; }
 
   .nav-links {
-    display: flex; align-items: center; gap: 28px;
+    display: flex; align-items: center; gap: 20px;
     font-family: 'Geist Mono', ui-monospace, monospace;
     font-size: 12px;
     letter-spacing: 0.04em;
@@ -1069,6 +1090,37 @@
     color: var(--ink);
   }
 
+  /* ── Writing callout ───────────────────────────────── */
+  .writing-callout {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .writing-callout .wc-label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+  .writing-callout a {
+    font-size: 16px;
+    color: var(--ink-2);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 2px;
+    transition: color 160ms ease, border-color 160ms ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .writing-callout a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
   /* ── Print (PDF) ───────────────────────────────────── */
   @media print {
     .nav, .contact .socials, footer, .icon-btn, .pill-btn { display: none !important; }
@@ -1084,18 +1136,21 @@
 </head>
 <body>
 
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 <!-- ───── NAV ───── -->
 <header class="nav" id="nav">
   <div class="wrap nav-inner">
     <a href="#top" class="mark" aria-label="Manukashyap UV — home">
       <span class="dot"></span>
-      Manukashyap U. V. <em>· senior engineer</em>
+      Manukashyap U. V.
     </a>
     <nav class="nav-links" aria-label="Primary">
       <a href="#about" class="link"><span class="num">01</span>About</a>
       <a href="#work" class="link"><span class="num">02</span>Work</a>
       <a href="#projects" class="link"><span class="num">03</span>Projects</a>
-      <a href="#contact" class="link"><span class="num">04</span>Contact</a>
+      <a href="#skills" class="link"><span class="num">04</span>Stack</a>
+      <a href="#contact" class="link"><span class="num">07</span>Contact</a>
     </nav>
     <div class="nav-actions">
       <button class="hamburger" id="hamburger" aria-label="Open menu">
@@ -1106,7 +1161,7 @@
         <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
         <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       </button>
-      <button class="pill-btn" id="resume-btn" title="Save as PDF">
+      <button class="pill-btn" id="resume-btn" title="Save as PDF" aria-haspopup="dialog">
         <span class="pill-btn-label">Resume</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
       </button>
@@ -1116,15 +1171,18 @@
 
 <!-- Mobile drawer -->
 <div class="drawer-backdrop" id="drawer-backdrop"></div>
-<nav class="mobile-drawer" id="mobile-drawer" aria-label="Mobile navigation">
+<nav class="mobile-drawer" id="mobile-drawer" aria-label="Mobile navigation" aria-hidden="true">
   <a href="#about" class="drawer-link"><span class="num">01</span>About</a>
   <a href="#work" class="drawer-link"><span class="num">02</span>Work</a>
   <a href="#projects" class="drawer-link"><span class="num">03</span>Projects</a>
-  <a href="#contact" class="drawer-link"><span class="num">04</span>Contact</a>
+  <a href="#skills" class="drawer-link"><span class="num">04</span>Stack</a>
+  <a href="#recognition" class="drawer-link"><span class="num">05</span>Awards</a>
+  <a href="#education" class="drawer-link"><span class="num">06</span>Education</a>
+  <a href="#contact" class="drawer-link"><span class="num">07</span>Contact</a>
 </nav>
 
 <a id="top"></a>
-<main>
+<main id="main-content">
 
 <!-- ───── HERO ───── -->
 <section class="hero">
@@ -1132,9 +1190,7 @@
     <div>
       <div class="eyebrow stagger"><span class="pulse"></span> Open to senior / staff roles · Bengaluru, India</div>
       <h1 class="stagger">
-        Senior engineer at <span class="ital">Sony</span> —<br>
-        supply chain <span class="ampersand">&amp;</span><br>
-        <span class="ital">developer tooling.</span>
+        Senior engineer at <span class="ital">Sony</span> — supply chain <span class="ampersand">&amp;</span> <span class="ital">developer tooling.</span>
       </h1>
       <p class="hero-lede stagger">
         I'm <strong>Manukashyap</strong>, a senior software engineer at <strong>Sony</strong>.
@@ -1151,7 +1207,7 @@
     <div class="avatar-wrap" aria-hidden="true">
       <div class="avatar-ring"></div>
       <div class="avatar">
-        <img src="assets/manukashyap.jpg" alt="Portrait of Manukashyap" width="400" height="400" loading="lazy" decoding="async" />
+        <img src="assets/manukashyap.jpg" alt="" width="400" height="400" decoding="async" />
       </div>
     </div>
   </div>
@@ -1380,6 +1436,15 @@
       </article>
 
     </div>
+
+    <div class="writing-callout reveal">
+      <span class="wc-label">// Writing</span>
+      <a href="refactoring-monolith.html">
+        Refactoring a monolith — lessons from the field
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
   </div>
 </section>
 
@@ -1512,10 +1577,10 @@
 </button>
 
 <!-- Resume Modal -->
-<div class="resume-overlay" id="resume-overlay">
-  <div class="resume-modal">
-    <div class="emoji">👀</div>
-    <h3>Oh, you're <em>interested?</em></h3>
+<div class="resume-overlay" id="resume-overlay" aria-hidden="true">
+  <div class="resume-modal" role="dialog" aria-modal="true" aria-labelledby="resume-modal-title">
+    <div class="emoji" aria-hidden="true">👀</div>
+    <h3 id="resume-modal-title">Oh, you're <em>interested?</em></h3>
     <p>Love to hear it. I don't keep a downloadable resume floating around — but I'd much rather have a real conversation. Drop me a line and let's talk.</p>
     <div class="cta-row">
       <a class="cta-primary" href="mailto:manukashyap.u.v@gmail.com">
@@ -1583,11 +1648,19 @@
     backdrop.classList.toggle('is-open', isOpen);
     hamburger.classList.toggle('is-open', isOpen);
     hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    drawer.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+    if (isOpen) {
+      const firstLink = drawer.querySelector('a');
+      if (firstLink) firstLink.focus();
+    }
   };
   hamburger.addEventListener('click', () => toggleDrawer());
   backdrop.addEventListener('click', () => toggleDrawer(false));
   drawer.querySelectorAll('.drawer-link').forEach(link => {
     link.addEventListener('click', () => toggleDrawer(false));
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && drawer.classList.contains('is-open')) toggleDrawer(false);
   });
 
   // ── Scroll reveals ──
@@ -1601,20 +1674,46 @@
   }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  // ── Resume: cheeky modal ──
+  // ── Resume: cheeky modal with focus trap ──
   const overlay = document.getElementById('resume-overlay');
-  document.getElementById('resume-btn').addEventListener('click', () => {
+  const resumeModal = overlay.querySelector('.resume-modal');
+  const resumeBtn = document.getElementById('resume-btn');
+  let lastFocusedBeforeModal = null;
+
+  function getModalFocusable() {
+    return [...resumeModal.querySelectorAll(
+      'a[href], button:not([disabled]), input, textarea, select, [tabindex]:not([tabindex="-1"])'
+    )];
+  }
+
+  function openModal() {
+    lastFocusedBeforeModal = document.activeElement;
     overlay.classList.add('show');
-  });
-  document.getElementById('resume-close').addEventListener('click', () => {
+    overlay.setAttribute('aria-hidden', 'false');
+    const focusable = getModalFocusable();
+    if (focusable.length) focusable[0].focus();
+  }
+
+  function closeModal() {
     overlay.classList.remove('show');
-  });
-  overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) overlay.classList.remove('show');
-  });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      overlay.classList.remove('show');
+    overlay.setAttribute('aria-hidden', 'true');
+    if (lastFocusedBeforeModal) lastFocusedBeforeModal.focus();
+  }
+
+  resumeBtn.addEventListener('click', openModal);
+  document.getElementById('resume-close').addEventListener('click', closeModal);
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
+
+  overlay.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') { closeModal(); return; }
+    if (e.key !== 'Tab') return;
+    const focusable = getModalFocusable();
+    if (!focusable.length) return;
+    const first = focusable[0], last = focusable[focusable.length - 1];
+    if (e.shiftKey) {
+      if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+    } else {
+      if (document.activeElement === last) { e.preventDefault(); first.focus(); }
     }
   });
 
