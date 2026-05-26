@@ -394,12 +394,13 @@
   .pill-btn svg { width: 13px; height: 13px; }
 
   /* ── Section frame ─────────────────────────────────── */
-  section { padding: 96px 0; position: relative; }
-  @media (max-width: 640px) { section { padding: 64px 0; } }
+  section { padding: 80px 0; position: relative; }
+  @media (max-width: 640px) { section { padding: 56px 0; } }
+  #recognition, #education { padding: 56px 0; }
 
   .section-head {
     display: flex; align-items: baseline; gap: 18px;
-    margin-bottom: 48px;
+    margin-bottom: 36px;
     padding-bottom: 16px;
     border-bottom: 1px solid var(--line);
   }
@@ -636,16 +637,16 @@
   .role-org strong { font-weight: 500; }
 
   .project-tag {
-    display: inline-block;
+    display: block;
     font-family: 'Geist Mono', monospace;
     font-size: 11px;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--accent);
-    background: var(--accent-soft);
-    padding: 4px 9px;
-    border-radius: 4px;
-    margin: 16px 0 10px;
+    background: none;
+    padding: 0;
+    border-radius: 0;
+    margin: 14px 0 6px;
   }
   .role ul {
     list-style: none; padding: 0; margin: 0 0 8px;
@@ -673,7 +674,7 @@
     background: var(--bg-elev);
     border: 1px solid var(--line);
     border-radius: 16px;
-    padding: 36px;
+    padding: 28px 32px;
     transition: border-color 220ms ease;
     position: relative;
     overflow: hidden;
@@ -1224,40 +1225,18 @@
       <div class="col-label">// Bio</div>
       <div class="prose">
         <p>
-          I joined Sony in 2021 and have been part of the team that built a global supply chain platform
-          from early mockups into a production system serving <strong>North America, Europe, APAC, and Japan</strong>.
-          At peak it handles billions in monthly order volume, and it's been recognized as <strong>Best App of the Year
-          two years running</strong>.
-        </p>
-        <p>
-          My core is <strong>Java / Spring Boot</strong> — services, Spring Batch pipelines, and the careful work of
-          keeping a critical system reliable. But I'm equally comfortable on <strong>React / Vue</strong> frontends,
-          and over the last year I've shipped LLM and RAG systems in production.
-        </p>
-        <p>
-          More recently, I've been building <em>tooling for the engineers building the software</em> — designing
-          autonomous agent workflows that compress the ticket-to-code lifecycle, now adopted across multiple
-          engineering teams.
+          Five years at Sony — built a global supply chain platform from mockups to production, serving
+          <strong>North America, Europe, APAC, and Japan</strong> and recognised as <strong>Best App of the Year
+          two years running</strong>. Core is <strong>Java / Spring Boot</strong>; equally comfortable in
+          <strong>React / Vue</strong> and shipping LLM &amp; RAG systems.
         </p>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ───── NOW ───── -->
-<section style="padding-top:0;">
-  <div class="wrap">
-    <div class="two-col reveal">
+    <div class="two-col reveal" style="margin-top:28px;">
       <div class="col-label">// Now</div>
-      <div class="now-card">
-        <h3>What I'm <em>working on</em></h3>
-        <div style="font-family:'Geist Mono',monospace;font-size:11.5px;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase;">Updated · May 2026</div>
-        <ul class="now-list">
-          <li>Scaling a multi-agent SDLC pipeline across multiple engineering teams — git worktrees, parallel subagents, automated merge requests.</li>
-          <li>Expanding an AI test-generation agent: hundreds of Playwright tests auto-authored, rollout to a global web platform in flight.</li>
-          <li>Leading a pod of 6 within a 30-person cross-functional team — coordinating delivery across global stakeholders.</li>
-          <li>Reading more about evaluation frameworks for agentic systems and spec-first development.</li>
-        </ul>
+      <div class="hero-meta" style="padding-top:2px;">
+        <div>Scaling a multi-agent SDLC pipeline across multiple engineering teams</div>
+        <div>Expanding an AI test-generation agent — hundreds of Playwright tests auto-authored</div>
       </div>
     </div>
   </div>
@@ -1284,23 +1263,20 @@
 
           <div class="project-tag">Global Supply Chain Platform</div>
           <ul>
-            <li>Own critical components across dozens of Spring Batch repositories and multiple microservices forming the core of Sony's global supply chain platform — sustaining billions in peak monthly order volume across North America, Europe, APAC, and Japan without service degradation.</li>
-            <li>Lead a pod of 6 within a 30-person cross-functional team, driving delivery across global regions and translating region-specific business requirements into a unified platform.</li>
-            <li>Drove service reliability to near-perfect uptime through targeted resilience hardening — achieving zero unplanned outages over 12 months.</li>
+            <li>Sustaining billions in peak monthly order volume across North America, Europe, APAC, and Japan — owning critical components across dozens of Spring Batch repos and microservices.</li>
+            <li>Lead a pod of 6 within a 30-person cross-functional team, driving delivery across global regions.</li>
           </ul>
 
           <div class="project-tag">Global Web Platform</div>
           <ul>
-            <li>Engineered a premature publishing detection system for a global marketing platform — intercepting accidental content activations and preventing high-visibility outages.</li>
-            <li>Spearheaded Answer Engine Optimization (AEO) initiatives to align content structure and metadata to LLM retrieval patterns — increasing brand visibility across AI platforms and establishing a standard rolling out across all product categories.</li>
-            <li>Initiated and led a POC for an AI-agent-driven Scala-to-Java codebase migration — engineering an autonomous migration loop that converted the application with a 100% pass rate across 230+ tests and zero performance degradation.</li>
+            <li>Spearheaded Answer Engine Optimization (AEO) initiatives — increasing brand visibility across AI platforms and establishing a standard rolling out across all product categories.</li>
+            <li>Led a POC for an AI-agent-driven Scala-to-Java migration — 100% pass rate across 230+ tests, zero performance degradation.</li>
           </ul>
 
           <div class="project-tag">Agentic SDLC &amp; Automation Tooling</div>
           <ul>
-            <li>Designed and deployed a spec-driven multi-agent SDLC automation workflow, adopted by 20+ engineers and currently scaling organization-wide.</li>
-            <li>Architected autonomous agents for requirement gathering, code implementation, and automated merge request creation with git worktree isolation — compressing the ticket-to-merge-request lifecycle from hours to minutes.</li>
-            <li>Partnered with QA leadership to build an AI agent that autonomously crawls web applications and generates Playwright test cases from live site behavior — migrated legacy Cypress tests and auto-generated hundreds of functional test cases, accelerating QA cycles significantly.</li>
+            <li>Designed a spec-driven multi-agent SDLC workflow, adopted by 20+ engineers and scaling org-wide.</li>
+            <li>Autonomous agents for requirements, implementation, and MR creation — compressing the ticket-to-MR lifecycle from hours to minutes.</li>
           </ul>
         </div>
       </article>
@@ -1313,18 +1289,14 @@
 
           <div class="project-tag">Global Supply Chain Platform</div>
           <ul>
-            <li>Joined the platform in its early phase — helped build it from UI mockups to a production-grade full-stack system.</li>
-            <li>Developed responsive React interfaces and backend APIs in Java/Spring Boot for global supply chain users.</li>
-            <li>Designed and implemented Spring Batch jobs for purchase-order processing, delivery timeline tracking, and cargo logistics — covering port/airport destinations and order distribution across shipping routes.</li>
-            <li>Coordinated a phased multi-region rollout across North America, Europe, and Asia — working directly with stakeholders in Singapore and Japan to adapt a unified global data model.</li>
-            <li>Built a full-stack bulk ingestion feature: multipart file upload and reusable Java processing utilities handling 100K+ rows across multiple business workflows.</li>
+            <li>Designed and implemented Spring Batch jobs for purchase-order processing, delivery tracking, and cargo logistics across shipping routes.</li>
+            <li>Coordinated a phased multi-region rollout across North America, Europe, and Asia — working directly with stakeholders in Singapore and Japan.</li>
           </ul>
 
           <div class="project-tag">Enterprise Knowledge Retrieval (RAG)</div>
           <ul>
-            <li>Built an in-production AI-powered RAG application for internal enterprise knowledge retrieval — accelerating knowledge discovery and reducing redundant engineering support queries across hundreds of internal users.</li>
-            <li>Engineered real-time Jira data ingestion alongside daily SharePoint and Confluence syncs — unifying distributed enterprise knowledge into a single retrieval layer.</li>
-            <li>Designed the frontend interface and expanded the document ingestion pipeline to handle complex PDF, XLSX, and multi-format files.</li>
+            <li>Built an in-production RAG application for internal knowledge retrieval — adopted by hundreds of internal users.</li>
+            <li>Engineered real-time Jira ingestion alongside daily SharePoint and Confluence syncs — unifying distributed enterprise knowledge into a single retrieval layer.</li>
           </ul>
         </div>
       </article>
@@ -1361,10 +1333,6 @@
           <span class="project-status">Production · 4 regions</span>
         </header>
         <p class="project-tag-line">Enterprise platform for end-to-end order lifecycle management across Sony's global supply chain.</p>
-        <p class="project-desc">
-          React frontend, Spring Boot microservices, Spring Batch jobs. Integrates with enterprise systems for
-          end-to-end order lifecycle across North America, Europe, APAC, and Japan. Recognized as Best App of the Year twice.
-        </p>
         <div class="project-stats">
           <div class="stat"><div class="v"><em>Billions</em></div><div class="k">Peak monthly volume</div></div>
           <div class="stat"><div class="v">Near-<em>perfect</em></div><div class="k">Uptime</div></div>
@@ -1372,8 +1340,7 @@
           <div class="stat"><div class="v"><em>2×</em></div><div class="k">Best App of Year</div></div>
         </div>
         <div class="tech">
-          <span>Java</span><span>Spring Boot</span><span>Spring Batch</span><span>JPA · Hibernate</span>
-          <span>QueryDSL</span><span>React</span><span>Oracle RDS</span><span>AWS</span><span>GitLab CI</span>
+          <span>Java</span><span>Spring Boot</span><span>Spring Batch</span><span>React</span><span>AWS</span>
         </div>
       </article>
 
@@ -1383,11 +1350,6 @@
           <span class="project-status">Internal · adopted across Sony</span>
         </header>
         <p class="project-tag-line">Spec-driven multi-agent software development workflow.</p>
-        <p class="project-desc">
-          A requirements agent produces design &amp; implementation docs before any code is written. Then
-          parallel and sequential subagents fan out for implementation, spec review, and code-quality review — with
-          git worktree isolation, branch management, and automated merge request creation end-to-end.
-        </p>
         <div class="project-stats">
           <div class="stat"><div class="v"><em>Multi</em>-team</div><div class="k">Adoption</div></div>
           <div class="stat"><div class="v">Spec-first</div><div class="k">Methodology</div></div>
@@ -1404,12 +1366,6 @@
           <span class="project-status">Production · Global</span>
         </header>
         <p class="project-tag-line">Sony's global marketing &amp; ecommerce platform.</p>
-        <p class="project-desc">
-          Built premature-publishing detection to prevent unintended content releases on the live site. Drove
-          answer-engine-optimization (AEO) work to improve visibility in AI-driven search. Built an autonomous
-          site-traversal agent that generates Playwright tests — migrated legacy Cypress tests and auto-generated
-          hundreds of functional tests. Led a Scala → Java migration POC using AI agents.
-        </p>
         <div class="project-stats">
           <div class="stat"><div class="v"><em>Hundreds</em></div><div class="k">Auto-generated tests</div></div>
           <div class="stat"><div class="v">AEO</div><div class="k">AI search optimization</div></div>
@@ -1425,11 +1381,10 @@
           <span class="project-status">Production · Internal RAG</span>
         </header>
         <p class="project-tag-line">AI-powered RAG application for internal enterprise knowledge retrieval.</p>
-        <p class="project-desc">
-          Built on AWS Bedrock and Aurora pgvector. I built the frontend and contributed to the document ingestion
-          pipeline — adding support for PDF, XLSX and other formats. Integrates real-time Jira data alongside
-          daily SharePoint and Confluence syncs, unifying distributed enterprise knowledge into a single retrieval layer.
-        </p>
+        <div class="project-stats">
+          <div class="stat"><div class="v"><em>Hundreds</em></div><div class="k">Internal users</div></div>
+          <div class="stat"><div class="v">3</div><div class="k">Data sources</div></div>
+        </div>
         <div class="tech">
           <span>AWS Bedrock</span><span>Aurora pgvector</span><span>RAG</span><span>React</span><span>Java</span>
         </div>
